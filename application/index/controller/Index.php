@@ -1,18 +1,18 @@
 <?php
 namespace app\index\controller;
 
+use app\index\worker\Beginner;
+use app\index\worker\Freshman;
 use Elasticsearch\ClientBuilder;
 
 class Index
 {
     public function index()
     {
-        $params = array(
-            '127.0.0.1:9200'
-        );
-        $client = ClientBuilder::create()->setHosts($params)->build();
-        halt($client);
+        $beginner = new Beginner();
+        $freshman = new Freshman();
 
-        echo 'ok';//
+        //$freshman->getMappings();
+        $freshman->createIndex();
     }
 }
